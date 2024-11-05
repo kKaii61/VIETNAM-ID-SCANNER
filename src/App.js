@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import ScannerBox from './components/Scanner';
+// import ScanImage from './components/ScanImage';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [camera, setCamera] = useState(false);
+  // const [file, setFile] = useState(false);
+
+  // const handleFile = (e) => {
+  //   setFile((file) => !file);
+  // };
+
+  const handleCamera = (e) => {
+    setCamera((camera) => !camera);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <button onClick={handleCamera}>
+          {!camera ? 'Open Camera' : 'Close Camera'}
+        </button>
+        {camera && <ScannerBox />}
+      </div>
+
+      {/* <button onClick={handleFile}>Choose File</button> */}
+      {/* {file && <ScanImage />} */}
     </div>
   );
 }
